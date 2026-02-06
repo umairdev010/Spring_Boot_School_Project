@@ -1,6 +1,6 @@
 CREATE TABLE school (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    city VARCHAR(100) NOT NULL
-    estb_year INT
+                        id INT AUTO_INCREMENT PRIMARY KEY,
+                        name VARCHAR(100) NOT NULL,
+                        city VARCHAR(100) NOT NULL,
+                        estb_year INT
 );
