@@ -13,15 +13,27 @@ public class SchoolRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public List<School> findAll (){
-        return jdbcTemplate.query("SELECT * FROM school",(rs,row) -> {
-            School school =new School();
+    public List<School> findAll() {
+        return jdbcTemplate.query("SELECT * FROM school", (rs, row) -> {
+            School school = new School();
             school.setId(rs.getInt("id"));
             school.setName(rs.getString("name"));
             school.setCity(rs.getString("city"));
             school.setEstbYear(rs.getInt("estb_year"));
             return school;
-        } );
+        });
+    }
+
+    public School findById(Integer id) {
+        String sql = "SELECT * FROM school WHERE id = ?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{id}, (rs, rowNum) -> {
+            School school = new School();
+            school.setId(rs.getInt("id"));
+            school.setName(rs.getString("name"));
+            school.setCity(rs.getString("city"));
+            school.setEstbYear(rs.getInt("estb_year"));
+            return school;
+        });
     }
 
     public School save(School school) {
