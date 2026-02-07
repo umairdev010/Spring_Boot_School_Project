@@ -11,15 +11,13 @@ public class KeepAliveRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println("Application started. Press Ctrl+C to exit.");
 
-        // Keep the main thread alive
         CountDownLatch latch = new CountDownLatch(1);
 
-        // Add shutdown hook
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             System.out.println("Shutting down...");
             latch.countDown();
         }));
 
-        latch.await(); // Wait forever
+        latch.await();
     }
 }

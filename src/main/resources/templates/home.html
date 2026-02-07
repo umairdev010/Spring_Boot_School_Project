@@ -18,8 +18,8 @@
     <!-- Display current URL info -->
     <div class="alert alert-info">
         <strong>Access URLs:</strong><br>
-        Application: <code>http://localhost:8082/school/</code><br>
-        H2 Console: <a th:href="@{/h2-console}" target="_blank">http://localhost:8082/school/h2-console</a>
+        Application: <code>http://localhost:8082/</code><br>
+        H2 Console: <a th:href="@{/h2-console}" target="_blank">http://localhost:8082/h2-console</a>
     </div>
 
     <!-- School Info Form -->
@@ -28,7 +28,7 @@
             <h5>Add/Edit School</h5>
         </div>
         <div class="card-body">
-            <form th:action="@{/school/save}" method="post" th:object="${school}">
+            <form th:action="@{/save}" method="post" th:object="${school}">
                 <!-- Hidden ID field -->
                 <input type="hidden" name="id" th:value="*{id}">
 
@@ -77,8 +77,8 @@
                     <td th:text="${school.city}"></td>
                     <td th:text="${school.estbYear}"></td>
                     <td>
-                        <a th:href="@{/school/edit/{id}(id=${school.id})}" class="btn btn-sm btn-warning">Edit</a>
-                        <a th:href="@{/school/delete/{id}(id=${school.id})}" class="btn btn-sm btn-danger">Delete</a>
+                        <a th:href="@{/edit/{id}(id=${school.id})}" class="btn btn-sm btn-warning">Edit</a>
+                        <a th:href="@{/delete/{id}(id=${school.id})}" class="btn btn-sm btn-danger">Delete</a>
                     </td>
                 </tr>
                 </tbody>
@@ -90,7 +90,7 @@
     </div>
 
     <footer class="mt-4 text-center text-muted">
-        <p>Spring Boot + H2 Database + Thymeleaf | Port: 8082 | Context: /school</p>
+        <p>Spring Boot + H2 Database + Thymeleaf | Port: 8082 | Context: /</p>
     </footer>
 </div>
 </body>

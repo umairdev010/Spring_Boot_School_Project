@@ -16,7 +16,6 @@ public class SchoolController {
     @Autowired
     private SchoolRepository schoolRepository;
 
-    // Add this test endpoint FIRST
     @GetMapping("/test")
     @ResponseBody
     public String test() {
@@ -43,13 +42,12 @@ public class SchoolController {
     public String saveSchool(@ModelAttribute School school) {
         System.out.println("✓ Saving school: " + school.getName());
         schoolRepository.save(school);
-        return "redirect:/school/";  // FIXED: Added trailing slash
+        return "redirect:/";
     }
 
     @GetMapping("/edit/{id}")
     public String editSchool(@PathVariable Integer id, Model model) {
         System.out.println("✓ Editing school ID: " + id);
-        // For now, get all and find the one with matching ID
         List<School> schools = schoolRepository.findAll();
         School school = schools.stream()
                 .filter(s -> s.getId() != null && s.getId().equals(id))
@@ -64,6 +62,6 @@ public class SchoolController {
     public String deleteSchool(@PathVariable Integer id) {
         System.out.println("✓ Deleting school ID: " + id);
         schoolRepository.deleteById(id);
-        return "redirect:/school/";
+        return "redirect:/";
     }
 }
